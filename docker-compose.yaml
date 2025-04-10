@@ -1,0 +1,19 @@
+services:
+  ai_toolchain_ubuntu_20_x5_gpu:
+    image: openexplorer/ai_toolchain_ubuntu_20_x5_gpu:v1.2.8
+    container_name: x5_dev
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    volumes:
+      - ./ai_toolchain_package:/open_explorer
+      - ./data:/data
+    ports:
+      - "8888:8888"  # e.g. Jupyter
+    shm_size: '16gb'
+    stdin_open: true
+    tty: true
