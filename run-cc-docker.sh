@@ -7,6 +7,8 @@ if [ ! -f "$FILE" ]; then
     wget "$URL" -O "$FILE"
 fi
 
+mkdir -p cc_ws/tros_ws/src
+
 docker load --input $FILE
 IMAGE_ID=$(docker images | grep pc_tros | awk '{print $3}')
 docker run -it --rm --name tros_cc_container --entrypoint="/bin/bash" --network=host -w /mnt/test -v ./cc_ws:/mnt/test "$IMAGE_ID"

@@ -33,3 +33,10 @@
 
 # Tarballs
 *.gz
+
+# Source codes
+cc_ws/
+ai_toolchain_package/
+
+# Data
+data/
